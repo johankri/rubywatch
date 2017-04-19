@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+last = nil
+while true
+  time = File.mtime(ARGV[0])
+  if time != last
+    puts `ruby #{ARGV[0]}`
+    last = time
+  end
+  begin
+    sleep 0.1
+  rescue Interrupt => e
+    puts
+    exit
+  end
+end
+  
