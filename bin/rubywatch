@@ -1,5 +1,15 @@
 #!/usr/bin/env ruby
 
+if ARGV.length == 0
+  puts "Usage: rubywatch [file]"
+  exit
+end
+
+unless File.exist? ARGV[0]
+  puts "rubywatch: #{ARGV[0]} no such file"
+  exit
+end
+
 last = nil
 while true
   time = File.mtime(ARGV[0])
